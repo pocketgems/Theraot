@@ -79,7 +79,11 @@ namespace System.Threading.Tasks
             // We need to do this filtering because all TaskExceptionHolders will be finalized during shutdown or unload
             // regardles of reachability of the task (i.e. even if the user code was about to observe the task's exception),
             // which can otherwise lead to spurious crashes during shutdown.
-            if (_faultExceptions == null || _isHandled || Environment.HasShutdownStarted || AppDomain.CurrentDomain.IsFinalizingForUnload() || _domainUnloadStarted)
+            if (_faultExceptions == null || _isHandled || Environment.HasShutdownStarted ||
+#if NUNITY
+                AppDomain.CurrentDomain.IsFinalizingForUnload() ||
+#endif
+                _domainUnloadStarted)
             {
                 return;
             }

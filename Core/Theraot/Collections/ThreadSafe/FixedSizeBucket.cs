@@ -76,6 +76,7 @@ namespace Theraot.Collections.ThreadSafe
             }
         }
 
+#if NUNITY
         ~FixedSizeBucket()
         {
             if (!AppDomain.CurrentDomain.IsFinalizingForUnload())
@@ -87,6 +88,7 @@ namespace Theraot.Collections.ThreadSafe
                 }
             }
         }
+#endif
 
         /// <summary>
         /// Gets the capacity.

@@ -48,6 +48,7 @@ namespace Theraot.Collections.Specialized
             }
         }
 
+#if NUNITY
         ~FlagArray()
         {
             if (!GCMonitor.FinalizingForUnload)
@@ -55,6 +56,7 @@ namespace Theraot.Collections.Specialized
                 RecycleExtracted();
             }
         }
+#endif
 
         public int Count
         {

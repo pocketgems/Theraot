@@ -61,6 +61,7 @@ namespace Theraot.Threading
             }
         }
 
+#if NUNITY
         public static bool FinalizingForUnload
         {
             get
@@ -68,6 +69,7 @@ namespace Theraot.Threading
                 return AppDomain.CurrentDomain.IsFinalizingForUnload();
             }
         }
+#endif
 
         private static void Initialize()
         {
